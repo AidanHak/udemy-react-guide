@@ -1,0 +1,10 @@
+.UserInput {
+	width:auto;
+	display:inline-block;
+}
+
+.UserInput input {
+	background-color:red;
+	color:white;
+	border:1px solid white;
+}

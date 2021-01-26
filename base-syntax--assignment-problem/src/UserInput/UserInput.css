@@ -1,0 +1,11 @@
+.UserInput {
+	background-color:rgb(0, 0, 0);
+	width:auto;
+	display:inline-block;
+}
+
+.UserInput input {
+	background-color:red;
+	color:white;
+	border:1px solid white;
+}
