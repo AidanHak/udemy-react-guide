@@ -1,6 +1,7 @@
 import React from 'react';
+import './Person.css';
 import styles from './Person.module.css';
-//import styled from 'styled-components';
+import styled from 'styled-components';
 
 // const StyledDiv = styled.div`
 // 	width:35%;
@@ -23,7 +24,7 @@ const person = (props) => {
 
 	return (
 		//<div className="Person" style={style}>
-		<div className={styles.Person}>
+		<div className={classes.Person}>
 			<p onClick={props.click}>I'm {props.name} and I am {props.age} years old!</p>
 			<p>{props.children}</p>
 			<input type="text" value={props.name} onChange={props.nameChange} />

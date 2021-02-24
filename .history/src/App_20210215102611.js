@@ -1,21 +1,20 @@
 import React, { Component } from 'react';
-//import styled from 'styled-components';
-import styles from './App.module.css';
+import styled from 'styled-components';
+import './App.css';
 import Person from './Person/Person';
-import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 
-// const StyledButton = styled.button`
-// 	background-color:${props => props.altStyle ? 'red' : 'green'};
-// 	color:white;
-// 	font:inherit;
-// 	border:1px solid blue;
-// 	padding:8px;
-// 	cursor:pointer;
-// 	&:hover {
-// 		background-color:${props => props.altStyle ? 'salmon' : 'lightgreen'};
-// 		color:black;
-// 	}
-// `;
+const StyledButton = styled.button`
+	background-color:${props => props.altStyle ? 'red' : 'green'};
+	color:white;
+	font:inherit;
+	border:1px solid blue;
+	padding:8px;
+	cursor:pointer;
+	&:hover {
+		background-color:${props => props.altStyle ? 'salmon' : 'lightgreen'};
+		color:black;
+	}
+`;
 
 class App extends Component {
 	state = {
@@ -73,48 +72,43 @@ class App extends Component {
 		// }
 
 		let persons = null;
-		let btnClass = '';
 
 		if (this.state.showPersons) {
 			persons = (
 				<div>
 					{
 						this.state.persons.map((person, index) => {
-							return <ErrorBoundary key={person.id}>
-								<Person 
+							return <Person 
 								click={() => this.deletePersonHandler(index)}
 								name={person.name} 
 								age={person.age}
-								//key={person.id}
+								key={person.id}
 								nameChange={(event) => this.nameChangedHandler(event, person.id)} />
-							</ErrorBoundary>
 						})
 					}
 				</div>
 			);
 
 			//style.backgroundColor = 'red';
-			btnClass = 'Red';
 		}
 
-		const assignedClasses = [];
+		const classes = [];
 		if (this.state.persons.length <= 1) {
-			assignedClasses.push(styles.red);
+			classes.push('red');
 		}
 		if (this.state.persons.length === 0) {
-			assignedClasses.push(styles.bold);
+			classes.push('bold');
 		}
 
 		return (
-			<div className={styles.App}>
+			<div className="App">
 				<h1>Hi, I'm a React App</h1>
-				<p className={assignedClasses.join(' ')}>This is really working!</p>
-				<button
+				<p className={classes.join(' ')}>This is really working!</p>
+				<StyledButton 
 					//style={style}
-					//altStyle={this.state.showPersons}
-					className={btnClass}
+					altStyle={this.state.showPersons}
 					onClick={this.togglePersonsHandler}>Toggle Persons
-				</button>
+				</StyledButton>
 				{persons}
 			</div>
 		);

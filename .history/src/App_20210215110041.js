@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 //import styled from 'styled-components';
+import './App.css';
 import styles from './App.module.css';
 import Person from './Person/Person';
-import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 
 // const StyledButton = styled.button`
 // 	background-color:${props => props.altStyle ? 'red' : 'green'};
@@ -73,21 +73,19 @@ class App extends Component {
 		// }
 
 		let persons = null;
-		let btnClass = '';
+		let btnClass = [classes.Button];
 
 		if (this.state.showPersons) {
 			persons = (
 				<div>
 					{
 						this.state.persons.map((person, index) => {
-							return <ErrorBoundary key={person.id}>
-								<Person 
+							return <Person 
 								click={() => this.deletePersonHandler(index)}
 								name={person.name} 
 								age={person.age}
-								//key={person.id}
+								key={person.id}
 								nameChange={(event) => this.nameChangedHandler(event, person.id)} />
-							</ErrorBoundary>
 						})
 					}
 				</div>
