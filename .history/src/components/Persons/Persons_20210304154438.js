@@ -1,8 +1,8 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import Person from './Person/Person';
 import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 
-class Persons extends PureComponent {
+class Persons extends Component {
 	// static getDerivedStateFromProps(props, state) {
 	// 	console.log('[Persons.js] getDerivedStateFromProps');
 	// 	return state;
@@ -12,14 +12,10 @@ class Persons extends PureComponent {
 	// 	console.log('[Persons.js] componentWillReceiveProps', props);
 	// }
 
-	// shouldComponentUpdate(nextProps, nextState) {
-	// 	console.log('[Persons.js] shouldComponentUpdate');
-	// 	return (
-	// 		nextProps.persons !== this.props.persons || 
-	// 		nextProps.changed !== this.props.changed || 
-	// 		nextProps.clicked !== this.props.clicked // if persons prop doesn't change, don't update the component (saves performance on re-rendering the component) - ONLY COMPARES THE POINTER!!!!!
-	// 	);
-	// }
+	shouldComponentUpdate(nextProps, nextState) {
+		console.log('[Persons.js] shouldComponentUpdate');
+		return nextProps.persons !== this.props.persons || nextProps.changed !== this.props.changed; // if persons prop doesn't change, don't update the component (saves performance on re-rendering the component) - ONLY COMPARES THE POINTER!!!!!
+	}
 
 	getSnapshotBeforeUpdate(prevProps, prevState) {
 		console.log('[Persons.js] getSnapshotBeforeUpdate');

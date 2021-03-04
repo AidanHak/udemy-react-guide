@@ -74,7 +74,7 @@ class App extends Component {
 		}
 
 		return (
-			<Auxiliary>
+			<Auxiliary classes={styles.App}>
 				<Cockpit
 					title={this.props.appTitle}
 					showPersons={this.state.showPersons}
@@ -86,4 +86,4 @@ class App extends Component {
 	}
 }
 
-export default withClass(App, styles.App);
+export default App;
