@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import styles from './Cockpit.module.css';
 
-const Cockpit = (props) => {
+const cockpit = (props) => {
 	// useEffect can be used more than once (with different dependencies)
 	useEffect(() => {
 		console.log('[Cockpit.js] useEffect');
@@ -10,18 +10,7 @@ const Cockpit = (props) => {
 		setTimeout(() => {
 			alert('Saved data to the cloud!');
 		}, 1000);
-
-		return () => {
-			console.log('[Cockpit.js] cleanup work in useEffect');
-		}
-	}, []); // useEffect only executes when values in array change (i.e. `props.persons`)
-
-	useEffect(() => {
-		console.log('[Cockpit.js] 2nd useEffect');
-		return () => {
-			console.log('[Cockpit.js] cleanup work in 2nd useEffect');
-		}
-	});
+	}, [props.persons]); // useEffect only executes when props.persons changes
 
 	const assignedClasses = [];
 	let btnClass = '';
@@ -50,4 +39,4 @@ const Cockpit = (props) => {
 	);
 };
 
-export default Cockpit;
+export default cockpit;

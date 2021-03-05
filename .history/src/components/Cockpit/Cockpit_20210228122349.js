@@ -10,18 +10,7 @@ const Cockpit = (props) => {
 		setTimeout(() => {
 			alert('Saved data to the cloud!');
 		}, 1000);
-
-		return () => {
-			console.log('[Cockpit.js] cleanup work in useEffect');
-		}
-	}, []); // useEffect only executes when values in array change (i.e. `props.persons`)
-
-	useEffect(() => {
-		console.log('[Cockpit.js] 2nd useEffect');
-		return () => {
-			console.log('[Cockpit.js] cleanup work in 2nd useEffect');
-		}
-	});
+	}, []); // useEffect only executes when props.persons changes
 
 	const assignedClasses = [];
 	let btnClass = '';
