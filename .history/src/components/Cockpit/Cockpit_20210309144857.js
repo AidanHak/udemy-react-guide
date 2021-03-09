@@ -1,23 +1,18 @@
-import React, { useEffect, useRef, useContext } from 'react';
+import React, { useEffect, useRef } from 'react';
 import styles from './Cockpit.module.css';
-import AuthContext from '../../context/auth-context';
 
-const Cockpit = (props) => {
+const cockpit = (props) => {
 	const toggleBtnRef = useRef(null);
-	const authContext = useContext(AuthContext);
+	toggleBtnRef.current.click();
 
-	console.log(authContext.authenticated);
-	
 	// useEffect can be used more than once (with different dependencies)
 	useEffect(() => {
 		console.log('[Cockpit.js] useEffect');
-		
+
 		// Imitate an HTTP request
-		// setTimeout(() => {
-		// 	alert('Saved data to the cloud!');
-		// }, 1000);
-			
-		toggleBtnRef.current.click();
+		setTimeout(() => {
+			alert('Saved data to the cloud!');
+		}, 1000);
 
 		return () => {
 			console.log('[Cockpit.js] cleanup work in useEffect');
@@ -48,12 +43,17 @@ const Cockpit = (props) => {
 		<div className={styles.Cockpit}>
 			<h1>{props.title}</h1>
 			<p className={assignedClasses.join(' ')}>This is really working!</p>
-			<button ref={toggleBtnRef} className={btnClass} onClick={props.clicked}>
+			<button
+				//style={style}
+				//altStyle={this.state.showPersons}
+				ref={toggleBtnRef}
+				className={btnClass}
+				onClick={props.clicked}
+			>
 				Toggle Persons
 			</button>
-			<button onClick={authContext.login}>Log In</button>
 		</div>
 	);
 };
 
-export default React.memo(Cockpit);
+export default React.memo(cockpit);
